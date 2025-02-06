@@ -1,0 +1,12 @@
+up:
+    podman compose up
+
+build:
+    ./gradlew clean shadowJar
+
+submit: 
+    docker cp build/libs/customer-feedback-analytics-1.0-SNAPSHOT-all.jar flink-jobmanager:/opt/flink/usrlib/customer-feedback-analytics.jar
+    docker exec flink-jobmanager flink run -d /opt/flink/usrlib/customer-feedback-analytics.jar
+
+logs:
+    podman compose logs -f

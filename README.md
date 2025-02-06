@@ -1,4 +1,4 @@
-# streaming-analytics-example
+# streaming-analytics-example (wip)
 
 A local example showing how to use Kafka and Stream Analytics to process real-time customer feedback.
 
@@ -23,6 +23,21 @@ A local example showing how to use Kafka and Stream Analytics to process real-ti
     ```
     cd webapp
     just up
+    ```
+
+4. Run the Flink cluster
+    ```
+    cd flink
+    just up
+    ```
+
+5. Submit the streaming job to flink
+    ```
+    sdk install java 17.0.14-amzn
+    sdk use java 17.0.14-amzn
+
+    cd flink
+    just submit
     ```
 
 

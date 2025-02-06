@@ -1,0 +1,43 @@
+version: '3.4'
+
+services:
+  jobmanager:
+    image: apache/flink:1.20.0-scala_2.12-java17
+    container_name: flink-jobmanager
+    networks:
+      - streaming-analytics-example
+    ports:
+      - "8082:8081"
+    command: jobmanager
+    environment:
+      - JOB_MANAGER_RPC_ADDRESS=jobmanager
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: jobmanager
+        state.backend: filesystem
+        state.checkpoints.dir: file:///tmp/flink-checkpoints
+        heartbeat.interval: 1000
+        heartbeat.timeout: 5000
+
+  taskmanager:
+    image: apache/flink:1.20.0-scala_2.12-java17
+    container_name: flink-taskmanager
+    networks:
+      - streaming-analytics-example
+    depends_on:
+      - jobmanager
+    command: taskmanager
+    environment:
+      - JOB_MANAGER_RPC_ADDRESS=jobmanager
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: jobmanager
+        taskmanager.numberOfTaskSlots: 2
+        state.backend: filesystem
+        state.checkpoints.dir: file:///tmp/flink-checkpoints
+        heartbeat.interval: 1000
+        heartbeat.timeout: 5000
+
+networks:
+  streaming-analytics-example:
+    external: true
