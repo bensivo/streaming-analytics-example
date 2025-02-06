@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        /* #messages {
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+        #message-form {
+            display: flex;
+            gap: 10px;
+        }
+        #message-input {
+            flex-grow: 1;
+            padding: 5px;
+        } */
+        #btn-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-column-gap: 1rem;
+        }
+        button {
+            height:3em;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div id="messages"></div> -->
+    <!-- <form id="message-form">
+        <input type="text" id="message-input" placeholder="Type a message...">
+        <button type="submit">Send</button>
+    </form> -->
+    <h1>Rate your local 7-Eleven!</h1>
+    <span id="status">Status: ?</span>
+    <br/>
+    <div id="btn-container">
+        <button style="background-color:#ff0a0a" id="btn-very-angry">Very Angry</button>
+        <button style="background-color:#f2ce02" id="btn-angry">Angry</button>
+        <button style="background-color:#ebff0a" id="btn-neutral">Neutral</button>
+        <button style="background-color:#85e62c" id="btn-happy">Happy</button>
+        <button style="background-color:#209c05" id="btn-very-happy">Very Happy</button>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
